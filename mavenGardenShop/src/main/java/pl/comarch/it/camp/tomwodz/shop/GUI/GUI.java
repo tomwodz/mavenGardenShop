@@ -13,7 +13,7 @@ import java.util.Scanner;
 public  class GUI implements IGUI {
 
     @Autowired
-    private ValidateInput validateInput;
+    private IValidateInput validateInput;
     @Autowired
     private IUserRepository userRepository;
 
@@ -34,7 +34,13 @@ public  class GUI implements IGUI {
                     System.out.println(menu);
                 }
             }
-        return Integer.parseInt(scanner.nextLine().trim());
+        String choice = scanner.nextLine().trim();
+            if (validateInput.validateChoise(choice)) {
+                return Integer.parseInt(choice);
+            }
+            else {showMenuUser(userRole);
+            }
+        return 0;
     }
 
     public  User readLoginAndPassword(){
@@ -78,11 +84,24 @@ public  class GUI implements IGUI {
 
     public  Product buyProduct(){
         Product product = new Product();
+        return buyAProduct(product);
+    }
+    private Product buyAProduct(Product product){
+        Product aProduct = product;
         System.out.println("Enter the product code:");
-        product.setCode(scanner.nextLine());
-        System.out.println("Enter quantity:");
-        product.setQuantity(Integer.parseInt(scanner.nextLine()));
-        return product;
+        String code = scanner.nextLine().trim();
+        if (validateInput.validateCode(code)) {
+            aProduct.setCode(code);
+            System.out.println("Enter quantity:");
+            String quantity = scanner.nextLine().trim();
+            if (validateInput.validateQuantity(quantity)) {
+                aProduct.setQuantity(Integer.parseInt(quantity));
+                return aProduct;
+            }
+            else {buyAProduct(aProduct);};
+        }
+        else {buyAProduct(product);}
+        return aProduct;
     }
 
     public  Product exchangeProduct(){

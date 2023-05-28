@@ -1,4 +1,5 @@
 package pl.comarch.it.camp.tomwodz.shop.core;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.comarch.it.camp.tomwodz.shop.GUI.IGUI;
@@ -6,6 +7,7 @@ import pl.comarch.it.camp.tomwodz.shop.db.IFileLoader;
 import pl.comarch.it.camp.tomwodz.shop.db.IProductRepository;
 
 import java.io.IOException;
+
 @Component
 public class Core implements ICore {
     @Autowired
@@ -18,8 +20,9 @@ public class Core implements ICore {
     private IProductRepository productsDataBase;
     @Autowired
     private IGUI gui;
+
     public void start() {
-       try {
+        try {
             fileLoader.readDataFromFile();
         } catch (IOException e) {
             System.out.println("Database is malformed !!");
@@ -31,14 +34,14 @@ public class Core implements ICore {
                 case 1:
                     boolean runMenuUser = true;
                     String userRole = authenticator.authenticate();
-                    if(userRole.equals("ADMIN")  || userRole.equals("USER")) {
+                    if (userRole.equals("ADMIN") || userRole.equals("USER")) {
                         while (runMenuUser) {
                             switch (gui.showMenuUser(userRole)) {
                                 case 1:
                                     productsDataBase.showProduct(userRole);
                                     break;
                                 case 2:
-                                    System.out.println(productsDataBase.buyProducts(gui.buyProduct()));
+                                    productsDataBase.buyProducts(gui.buyProduct());
                                     break;
                                 case 3:
                                     runMenuUser = false;
@@ -66,9 +69,8 @@ public class Core implements ICore {
                 case 3:
                     System.out.println("Waiting...");
                     try {
-                     fileLoader.saveDataToFile();
-                    }
-                    catch(IOException e){
+                        fileLoader.saveDataToFile();
+                    } catch (IOException e) {
                         System.out.println("Error database!! Please contact with admin");
                     }
                     System.out.println("Thank you for using our GardenShop! See you later!");

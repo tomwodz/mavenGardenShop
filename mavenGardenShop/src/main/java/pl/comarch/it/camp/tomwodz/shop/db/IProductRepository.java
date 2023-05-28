@@ -8,7 +8,7 @@ import java.util.Collection;
 public interface IProductRepository {
     Collection<Product> getProducts();
 
-    String buyProducts(Product product);
+    void buyProducts(Product product);
 
     void exchangeProducts(Product product);
 

@@ -18,32 +18,34 @@ public class ProductRepository implements IProductRepository{
         return this.products.values();
     }
 
-    public String buyProducts(Product product) {
+    public void buyProducts(Product product) {
         Product aProduct = this.products.get(product.getCode());
             try{
                 if (product.getQuantity() <= aProduct.getQuantity()) {
                     aProduct.setQuantity(aProduct.getQuantity() - product.getQuantity());
                     System.out.println("Łaczna cena wynosi:");
-                    return NumberFormat.getCurrencyInstance().format(product.getQuantity() * aProduct.getPricePerItem());
+                    System.out.println(NumberFormat.getCurrencyInstance().format(product.getQuantity() * aProduct.getPricePerItem()));
                 } else {
-                    return new StringBuilder().append("Podales za duza ilosc produktu.")
+                    System.out.println(
+                            new StringBuilder().append("Podales za duza ilosc produktu.")
                             .append(" Maksymana dostepna ilość to: ")
                             .append(aProduct.getQuantity())
                             .append(" dla ")
                             .append(aProduct.getCode())
                             .append(" ")
                             .append(aProduct.getName())
-                            .toString();
+                            .toString());
                 }
             }
-            catch (NullPointerException e){}
-            return "Podano zły kod produktu.";
+            catch (NullPointerException e){
+                System.out.println("Podano zły kod produktu.");
+            }
     }
 
     public void exchangeProducts(Product product) {
         try {
             Product aProduct = this.products.get(product.getCode());
-            aProduct.setQuantity(product.getQuantity());
+            aProduct.setQuantity(aProduct.getQuantity()+product.getQuantity());
         }
         catch (NullPointerException e){
             System.out.println("Podano zły kod produktu.");

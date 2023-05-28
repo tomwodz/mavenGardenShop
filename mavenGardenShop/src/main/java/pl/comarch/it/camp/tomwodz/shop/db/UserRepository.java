@@ -10,8 +10,8 @@ import java.util.Map;
 public class UserRepository implements IUserRepository {
     private Map<String, User> users = new HashMap<>();
 
-    public Collection<User> getUser() {
-        return this.users.values();
+    public Map<String, User>  getUser() {
+        return users;
     }
 
     public User findUserByLogin(String login) {

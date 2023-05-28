@@ -54,13 +54,13 @@ public class Authenticator implements IAuthenticator{
 
     public void showUser() {
         System.out.println("Login: / Role:");
-        for (User aUser : usersDataBase.getUser()) {
+        for (User aUser : usersDataBase.getUser().values()) {
             if (aUser.isAvailable() != false) System.out.println(aUser);
         }
     }
 
     public void changeUserRole(User user) {
-        for (User aUser : usersDataBase.getUser())
+        for (User aUser : usersDataBase.getUser().values())
             if (aUser.getLogin().equals(user.getLogin()) && aUser.isAvailable() == true) {
                 aUser.setRole(user.getRole());
                 System.out.println("Success!");

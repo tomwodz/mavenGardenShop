@@ -3,6 +3,7 @@ package pl.comarch.it.camp.tomwodz.shop.GUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.comarch.it.camp.tomwodz.shop.db.IUserRepository;
 import pl.comarch.it.camp.tomwodz.shop.model.User;
 import pl.comarch.it.camp.tomwodz.shop.product.Product;
 
@@ -13,6 +14,9 @@ public  class GUI implements IGUI {
 
     @Autowired
     private ValidateInput validateInput;
+    @Autowired
+    private IUserRepository userRepository;
+
     Scanner scanner = new Scanner(System.in);
     public  int showMenu(){
         for(Menu menu: EnumSet.range(Menu.HEADMENU1, Menu.HEADMENU4)){
@@ -87,12 +91,42 @@ public  class GUI implements IGUI {
         return product;
     }
 
-    public User readLoginChangeUser(){
+    public User readLoginChangeUser() {
         User user = new User();
         System.out.println("Please give login user for change: ");
-        user.setLogin(scanner.nextLine());
-        System.out.println("Please give new role: ");
-        user.setRole(scanner.nextLine());
+        boolean run = true;
+        int counter = 0;
+        while (run && counter <3) {
+            String login = scanner.nextLine();
+            for (User AUser : userRepository.getUser().values()) {
+                if (login.equals(AUser.getLogin())) {
+                    user.setLogin(login);
+                    user.setRole(AUser.getRole());
+                    run = false;
+                    boolean run2 = true;
+                    int counter2 = 0;
+                    while (run2 && counter2 < 3) {
+                        System.out.println("Please give new role (USER or ADMIN): ");
+                        String role = scanner.nextLine();
+                        if (role.equals("ADMIN") || role.equals("USER")) {
+                            user.setRole(role);
+                            run2 = false;
+                        } else {
+                            counter2++;
+                            if(counter2>3){
+                                return user;
+                            }
+                        }
+                    }
+                }
+            }
+            counter++;
+            if(counter<3 && run) {
+                System.out.println("Please give correct login: ");
+
+            }
+            else {break;}
+        }
         return user;
     }
 }

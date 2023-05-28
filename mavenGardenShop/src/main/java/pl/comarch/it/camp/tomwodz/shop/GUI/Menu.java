@@ -2,15 +2,15 @@ package pl.comarch.it.camp.tomwodz.shop.GUI;
 
 public enum Menu {
     HEADMENU1("Menu:"),
-    HEADMENU2("1. Zaloguj"),
-    HEADMENU3("2. Zarejestruj"),
+    HEADMENU2("1. Login"),
+    HEADMENU3("2. Registration"),
     HEADMENU4("3. Exit"),
     USERMENU1("Menu:"),
-    USERMENU2("1. Wyswietl liste produktow"),
-    USERMENU3("2. Kup produkt"),
-    USERMENU4("3. Wyloguj"),
-    ADMINMENU1("4. Uzupelnij produkt"),
-    ADMINMENU2("5. Nadaj role");
+    USERMENU2("1. List products"),
+    USERMENU3("2. Buy product"),
+    USERMENU4("3. Logout"),
+    ADMINMENU1("4. Complete product"),
+    ADMINMENU2("5. Assign roles");
 
     private final String menu;
 

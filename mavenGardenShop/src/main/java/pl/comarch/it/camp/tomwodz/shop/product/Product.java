@@ -65,15 +65,15 @@ public class Product implements Writable{
     @Override
     public String toString() {
         return new StringBuilder()
-                .append("Kod: ")
+                .append("Code: ")
                 .append(getCode())
-                .append(" Kat.: ")
+                .append(" Cat.: ")
                 .append(getCategory())
                 .append(" Name: ")
                 .append(getName())
-                .append(" Cena PLN/szt: ")
+                .append(" Price PLN/per item: ")
                 .append(getPricePerItem())
-                .append(" Ilosc: ")
+                .append(" Quantity: ")
                 .append(getQuantity())
                 .toString();
     }

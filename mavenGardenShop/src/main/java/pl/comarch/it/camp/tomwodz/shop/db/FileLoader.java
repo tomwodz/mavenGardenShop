@@ -16,9 +16,9 @@ import java.util.Collection;
 public class FileLoader implements IFileLoader{
 
     @Autowired
-    ProductRepository usersDatabase;
+    private ProductRepository usersDatabase;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public void readDataFromFile() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("db.csv"));

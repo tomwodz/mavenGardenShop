@@ -11,10 +11,10 @@ import pl.comarch.it.camp.tomwodz.shop.model.User;
 public class Authenticator implements IAuthenticator{
 
     @Autowired
-    IGUI gui;
+    private IGUI gui;
 
     @Autowired
-    IUserRepository usersDataBase;
+    private IUserRepository usersDataBase;
 
     private static final String seed = "uxU9xUQWQMbZQm6rmtHd";
 
@@ -30,7 +30,7 @@ public class Authenticator implements IAuthenticator{
             System.out.println("Incorrect login and password! Try again!");
             counter++;
         }
-        return null;
+        return "BRAK";
     }
 
     public void registration() {
@@ -39,14 +39,14 @@ public class Authenticator implements IAuthenticator{
             User userFromGUI = gui.readLogin();
             User userFromDb = usersDataBase.findUserByLogin(userFromGUI.getLogin());
             if (userFromDb == null) {
-                System.out.println("Podany login jest wolny.");
+                System.out.println("Login is free.");
                 userFromGUI.setPassword(DigestUtils.md5Hex(gui.savePassword() + seed));
                 userFromGUI.setName(gui.saveName());
                 userFromGUI.setEmail(gui.saveEmail());
                 usersDataBase.createNewUser(userFromGUI);
                break;
             } else {
-                System.out.println("Podany login jest zajety. Sprobuj ponownie.");
+                System.out.println("Login is busy. Try again.");
                 counter++;
             }
         }

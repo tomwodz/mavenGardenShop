@@ -12,7 +12,7 @@ import java.util.Scanner;
 public  class GUI implements IGUI {
 
     @Autowired
-    ValidateInput validateInput;
+    private ValidateInput validateInput;
     Scanner scanner = new Scanner(System.in);
     public  int showMenu(){
         for(Menu menu: EnumSet.range(Menu.HEADMENU1, Menu.HEADMENU4)){
@@ -58,7 +58,7 @@ public  class GUI implements IGUI {
             if (validateInput.validateName(name)) {
             run = false;
             }
-            else {System.out.println("Imie składa się z samych liter. Wprowadz ponownie.");
+            else {System.out.println("Enter only letters.");
             };
         } while (run);
         return name;
@@ -71,18 +71,18 @@ public  class GUI implements IGUI {
 
     public  Product buyProduct(){
         Product product = new Product();
-        System.out.println("Podaj kod produktu, ktory chcesz kupic:");
+        System.out.println("Enter the product code:");
         product.setCode(scanner.nextLine());
-        System.out.println("Podaj ilosc produktu, ktora chcesz kupic:");
+        System.out.println("Enter quantity:");
         product.setQuantity(Integer.parseInt(scanner.nextLine()));
         return product;
     }
 
     public  Product exchangeProduct(){
         Product product = new Product();
-        System.out.println("Podaj kod produktu, ktory chcesz zmienic:");
+        System.out.println("Enter the product code:");
         product.setCode(scanner.nextLine());
-        System.out.println("Podaj ilosc produktu, ktora chcesz zmienc:");
+        System.out.println("Enter quantity:");
         product.setQuantity(Integer.parseInt(scanner.nextLine()));
         return product;
     }

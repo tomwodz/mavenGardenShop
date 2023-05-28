@@ -23,14 +23,14 @@ public class ProductRepository implements IProductRepository{
             try{
                 if (product.getQuantity() <= aProduct.getQuantity()) {
                     aProduct.setQuantity(aProduct.getQuantity() - product.getQuantity());
-                    System.out.println("Łaczna cena wynosi:");
+                    System.out.println("Total price: ");
                     System.out.println(NumberFormat.getCurrencyInstance().format(product.getQuantity() * aProduct.getPricePerItem()));
                 } else {
                     System.out.println(
-                            new StringBuilder().append("Podales za duza ilosc produktu.")
-                            .append(" Maksymana dostepna ilość to: ")
+                            new StringBuilder().append("Too much quantity.")
+                            .append(" Max: ")
                             .append(aProduct.getQuantity())
-                            .append(" dla ")
+                            .append(" for ")
                             .append(aProduct.getCode())
                             .append(" ")
                             .append(aProduct.getName())
@@ -38,7 +38,7 @@ public class ProductRepository implements IProductRepository{
                 }
             }
             catch (NullPointerException e){
-                System.out.println("Podano zły kod produktu.");
+                System.out.println("Wrong code.");
             }
     }
 
@@ -48,7 +48,7 @@ public class ProductRepository implements IProductRepository{
             aProduct.setQuantity(aProduct.getQuantity()+product.getQuantity());
         }
         catch (NullPointerException e){
-            System.out.println("Podano zły kod produktu.");
+            System.out.println("Wrong code.");
         }
     }
 

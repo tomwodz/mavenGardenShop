@@ -4,9 +4,10 @@ import pl.comarch.it.camp.tomwodz.shop.product.Product;
 
 import java.text.NumberFormat;
 import java.util.Collection;
+import java.util.Map;
 
 public interface IProductRepository {
-    Collection<Product> getProducts();
+    Map<String, Product> getProducts();
 
     void buyProducts(Product product);
 

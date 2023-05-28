@@ -14,8 +14,8 @@ public class ProductRepository implements IProductRepository{
    private Map<String, Product> products = new HashMap<>();
 
 
-    public Collection<Product> getProducts() {
-        return this.products.values();
+    public Map<String, Product> getProducts() {
+        return products;
     }
 
     public void buyProducts(Product product) {

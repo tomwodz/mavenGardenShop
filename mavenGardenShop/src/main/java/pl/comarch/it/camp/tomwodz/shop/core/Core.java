@@ -64,7 +64,8 @@ public class Core implements ICore {
                                 default:
                             }
                         }
-                    } }
+                    }
+                    }
                     break;
                 case 2:
                     authenticator.registration();

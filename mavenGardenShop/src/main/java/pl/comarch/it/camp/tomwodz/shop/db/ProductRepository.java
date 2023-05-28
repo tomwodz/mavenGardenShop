@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import pl.comarch.it.camp.tomwodz.shop.product.*;
 
 import java.text.NumberFormat;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 

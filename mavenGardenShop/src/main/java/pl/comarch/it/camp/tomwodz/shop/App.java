@@ -5,7 +5,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import pl.comarch.it.camp.tomwodz.shop.cofiguration.AppConfiguration;
-import pl.comarch.it.camp.tomwodz.shop.core.Core;
 import pl.comarch.it.camp.tomwodz.shop.core.ICore;
 
 public class App {

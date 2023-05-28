@@ -47,7 +47,7 @@ public class FileLoader implements IFileLoader{
     public void saveDataToFile() throws IOException {
         Collection<Writable> entries = new ArrayList<>();
         entries.addAll(usersDatabase.getProducts().values());
-        entries.addAll(userRepository.getUser());
+        entries.addAll(userRepository.getUser().values());
             BufferedWriter writer = new BufferedWriter(new FileWriter("db.csv"));
             boolean firstTime = true;
             for (Writable entry : entries) {

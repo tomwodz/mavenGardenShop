@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import pl.comarch.it.camp.tomwodz.shop.cofiguration.AppConfiguration;
 import pl.comarch.it.camp.tomwodz.shop.core.Core;
+import pl.comarch.it.camp.tomwodz.shop.core.ICore;
 
 public class App {
     public static void main(String[] args) {
@@ -13,7 +14,7 @@ public class App {
         try {
             ApplicationContext box =
                     new AnnotationConfigApplicationContext(AppConfiguration.class);
-        Core core = box.getBean(Core.class);
+        ICore core = box.getBean(ICore.class);
         core.start();
         }
         catch (BeansException e){

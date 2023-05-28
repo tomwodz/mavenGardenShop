@@ -1,7 +1,7 @@
 package pl.comarch.it.camp.tomwodz.shop.product;
 
 public class Tools extends Product{
-    String brand;
+    private String brand;
 
     public Tools(String code, String name, String category, double pricePerItem, int quantity, String brand) {
         super(code, name, category, pricePerItem, quantity);

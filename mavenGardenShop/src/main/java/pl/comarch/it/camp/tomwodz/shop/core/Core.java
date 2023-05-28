@@ -2,14 +2,14 @@ package pl.comarch.it.camp.tomwodz.shop.core;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.comarch.it.camp.tomwodz.shop.GUI.IGUI;
-import pl.comarch.it.camp.tomwodz.shop.db.FileLoader;
+import pl.comarch.it.camp.tomwodz.shop.db.IFileLoader;
 import pl.comarch.it.camp.tomwodz.shop.db.IProductRepository;
 
 import java.io.IOException;
 @Component
-public class Core {
+public class Core implements ICore {
     @Autowired
-    private FileLoader fileLoader;
+    private IFileLoader fileLoader;
 
     @Autowired
     private IAuthenticator authenticator;

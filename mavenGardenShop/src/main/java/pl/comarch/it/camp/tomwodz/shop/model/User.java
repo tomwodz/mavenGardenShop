@@ -7,7 +7,7 @@ public class User implements Writable {
     private String password;
     private String role;
     private String name;
-    private String emial;
+    private String email;
 
     private boolean available;
 
@@ -16,7 +16,7 @@ public class User implements Writable {
         this.password = password;
         this.role = role;
         this.name = name;
-        this.emial = emial;
+        this.email = emial;
         this.available = available;
     }
 
@@ -69,12 +69,12 @@ public class User implements Writable {
         this.name = name;
     }
 
-    public String getEmial() {
-        return emial;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmial(String emial) {
-        this.emial = emial;
+    public void setEmail(String emial) {
+        this.email = emial;
     }
 
     public boolean isAvailable() {
@@ -94,7 +94,7 @@ public class User implements Writable {
                 .append("         ")
                 .append(getName())
                 .append(" ")
-                .append(getEmial())
+                .append(getEmail())
                 .toString();
     }
 
@@ -111,7 +111,7 @@ public class User implements Writable {
                 .append(";")
                 .append(getName())
                 .append(";")
-                .append(getEmial())
+                .append(getEmail())
                 .append(";")
                 .append(isAvailable())
                 .toString();

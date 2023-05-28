@@ -42,7 +42,7 @@ public class Authenticator implements IAuthenticator{
                 System.out.println("Podany login jest wolny.");
                 userFromGUI.setPassword(DigestUtils.md5Hex(gui.savePassword() + seed));
                 userFromGUI.setName(gui.saveName());
-                userFromGUI.setEmial(gui.saveEmail());
+                userFromGUI.setEmail(gui.saveEmail());
                 usersDataBase.createNewUser(userFromGUI);
                break;
             } else {

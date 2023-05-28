@@ -19,7 +19,7 @@ public class UserRepository implements IUserRepository {
     }
 
     public void createNewUser(User user) {
-        this.users.put(user.getLogin(), new User(user.getLogin(), user.getPassword(), "USER", user.getName(), user.getEmial(), true));
+        this.users.put(user.getLogin(), new User(user.getLogin(), user.getPassword(), "USER", user.getName(), user.getEmail(), true));
         System.out.println("Success. Uzytkownik zostal utworzony.");
     }
 

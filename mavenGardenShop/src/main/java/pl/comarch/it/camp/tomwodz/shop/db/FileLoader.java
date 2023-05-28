@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @Component
-public class FileLoader {
+public class FileLoader implements IFileLoader{
 
     @Autowired
     ProductRepository usersDatabase;

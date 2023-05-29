@@ -51,7 +51,7 @@ public class ProductRepository implements IProductRepository{
         }
     }
 
-    public void showProduct(String userRole) {
+    public void showProducts(String userRole) {
         for (Product product : this.products.values()) {
             if (userRole.equals("ADMIN")) {
                     System.out.println(product);

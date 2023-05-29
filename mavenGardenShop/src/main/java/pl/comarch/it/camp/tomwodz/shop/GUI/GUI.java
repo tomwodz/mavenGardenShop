@@ -21,7 +21,12 @@ public  class GUI implements IGUI {
     public  int showMenu(){
         for(Menu menu: EnumSet.range(Menu.HEADMENU1, Menu.HEADMENU4)){
             System.out.println(menu);}
-        return Integer.parseInt(scanner.nextLine().trim());
+        String choice = scanner.nextLine().trim();
+        if (validateInput.validateChoise(choice)) {
+            return Integer.parseInt(choice);
+        }
+        else {return showMenu();
+        }
     }
 
     public int showMenuUser(String userRole){
@@ -38,9 +43,8 @@ public  class GUI implements IGUI {
             if (validateInput.validateChoise(choice)) {
                 return Integer.parseInt(choice);
             }
-            else {showMenuUser(userRole);
+            else {return showMenuUser(userRole);
             }
-        return 0;
     }
 
     public  User readLoginAndPassword(){

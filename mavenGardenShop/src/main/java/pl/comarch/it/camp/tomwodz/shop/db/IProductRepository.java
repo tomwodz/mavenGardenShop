@@ -13,7 +13,7 @@ public interface IProductRepository {
 
     void exchangeProducts(Product product);
 
-    void showProduct(String userRole);
+    void showProducts(String userRole);
 
     void addProduct(Product product);
 }

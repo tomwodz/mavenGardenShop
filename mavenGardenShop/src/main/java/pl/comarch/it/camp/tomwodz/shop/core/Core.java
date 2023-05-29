@@ -21,6 +21,7 @@ public class Core implements ICore {
     @Autowired
     private IGUI gui;
 
+   @Override
     public void start() {
         try {
             fileLoader.readDataFromFile();
@@ -34,14 +35,14 @@ public class Core implements ICore {
                 case 1:
                     boolean runMenuUser = true;
                     String userRole = authenticator.authenticate();
-                    if(userRole.equals("BRAK")){
+                    if(userRole.equals("LACK")){
                         break;
                     } else {
                     if (userRole.equals("ADMIN") || userRole.equals("USER")) {
                         while (runMenuUser) {
                             switch (gui.showMenuUser(userRole)) {
                                 case 1:
-                                    productsDataBase.showProduct(userRole);
+                                    productsDataBase.showProducts(userRole);
                                     break;
                                 case 2:
                                     productsDataBase.buyProducts(gui.buyProduct());
@@ -62,6 +63,8 @@ public class Core implements ICore {
                                     }
                                     break;
                                 default:
+                                    System.out.println("Wrong choose!!");
+                                    break;
                             }
                         }
                     }
@@ -71,7 +74,6 @@ public class Core implements ICore {
                     authenticator.registration();
                     break;
                 case 3:
-                    System.out.println("Waiting...");
                     try {
                         fileLoader.saveDataToFile();
                     } catch (IOException e) {
@@ -80,6 +82,8 @@ public class Core implements ICore {
                     System.out.println("Thank you for using our GardenShop! See you later!");
                     return;
                 default:
+                    System.out.println("Wrong choose!!");
+                    break;
             }
         }
     }

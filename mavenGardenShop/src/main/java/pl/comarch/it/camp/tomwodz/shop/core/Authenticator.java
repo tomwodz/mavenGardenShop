@@ -24,13 +24,12 @@ public class Authenticator implements IAuthenticator{
             User userFromGUI = gui.readLoginAndPassword();
             User userFromDb = usersDataBase.findUserByLogin(userFromGUI.getLogin());
             if (userFromDb != null && userFromDb.getPassword().equals(DigestUtils.md5Hex(userFromGUI.getPassword() + seed))) {
-                System.out.println("Correct login!");
                 return userFromDb.getRole();
             }
             System.out.println("Incorrect login and password! Try again!");
             counter++;
         }
-        return "BRAK";
+        return "LACK";
     }
 
     public void registration() {
@@ -39,7 +38,6 @@ public class Authenticator implements IAuthenticator{
             User userFromGUI = gui.readLogin();
             User userFromDb = usersDataBase.findUserByLogin(userFromGUI.getLogin());
             if (userFromDb == null) {
-                System.out.println("Login is free.");
                 userFromGUI.setPassword(DigestUtils.md5Hex(gui.savePassword() + seed));
                 userFromGUI.setName(gui.saveName());
                 userFromGUI.setEmail(gui.saveEmail());

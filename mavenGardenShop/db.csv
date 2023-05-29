@@ -1,7 +1,7 @@
-Tools;7000;Narzedzia;Kosiarka;60.0;30;Makkita
-Product;6000;Kwiat;Tulipan celuka;1.0;590
-Product;5000;Krzew;Tamryszek 80 cm;13.0;1000
-Product;4000;Tree;Magnolia 60 cm;60.0;380
+Tools;7000;Kosiarka;Narzedzia;60.0;30;Makkita
+Product;6000;Tulipan celuka;Kwiat;1.0;590
+Product;5000;Tamryszek 80 cm;Krzew;13.0;1000
+Product;4000;Magnolia 60 cm;Tree;60.0;380
 User;Adam;5a9eeab1a21d2aa69d623a393b692fc9;ADMIN;Adam;adam@op.pl;true
 User;Monika;21c01cde4270dfd3ab2e0d1a6a052b2a;USER;Monika;monika@wp.pl;true
 User;admin;76a0219bf06f2ebcb96a0334b4814e8c;ADMIN;Tomek;twodzinski@op.pl;true

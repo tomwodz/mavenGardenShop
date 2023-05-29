@@ -30,7 +30,7 @@ public class Authenticator implements IAuthenticator {
             System.out.println("Incorrect login and password! Try again!");
             counter++;
         }
-        return "LACK";
+        return null;
     }
 
     @Override

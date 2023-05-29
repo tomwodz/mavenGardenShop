@@ -35,9 +35,6 @@ public class Core implements ICore {
                 case "1":
                     boolean runMenuUser = true;
                     String userRole = authenticator.authenticate();
-                    if(userRole.equals("LACK")){
-                        break;
-                    } else {
                     if (userRole.equals("ADMIN") || userRole.equals("USER")) {
                         while (runMenuUser) {
                             switch (gui.showMenuUser(userRole)) {
@@ -67,7 +64,6 @@ public class Core implements ICore {
                                     break;
                             }
                         }
-                    }
                     }
                     break;
                 case "2":

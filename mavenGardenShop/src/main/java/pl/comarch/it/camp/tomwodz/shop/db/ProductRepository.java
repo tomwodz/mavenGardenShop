@@ -12,11 +12,12 @@ public class ProductRepository implements IProductRepository{
 
    private Map<String, Product> products = new HashMap<>();
 
-
+@Override
     public Map<String, Product> getProducts() {
         return products;
     }
 
+    @Override
     public void buyProducts(Product product) {
         Product aProduct = this.products.get(product.getCode());
             try{
@@ -40,7 +41,7 @@ public class ProductRepository implements IProductRepository{
                 System.out.println("Wrong code.");
             }
     }
-
+@Override
     public void exchangeProducts(Product product) {
         try {
             Product aProduct = this.products.get(product.getCode());
@@ -50,7 +51,7 @@ public class ProductRepository implements IProductRepository{
             System.out.println("Wrong code.");
         }
     }
-
+@Override
     public void showProducts(String userRole) {
         for (Product product : this.products.values()) {
             if (userRole.equals("ADMIN")) {
@@ -62,7 +63,7 @@ public class ProductRepository implements IProductRepository{
             }
         }
     }
-
+@Override
     public void addProduct(Product product) {
         this.products.put(product.getCode(), product);
     }

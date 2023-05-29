@@ -5,9 +5,9 @@ import pl.comarch.it.camp.tomwodz.shop.product.Product;
 
 public interface IGUI {
 
-    int showMenu();
+    String showMenu();
 
-    int showMenuUser(String userRole);
+   String showMenuUser(String userRole);
 
     User readLoginAndPassword();
 

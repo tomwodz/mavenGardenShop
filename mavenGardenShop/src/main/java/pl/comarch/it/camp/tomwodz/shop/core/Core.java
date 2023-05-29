@@ -32,7 +32,7 @@ public class Core implements ICore {
 
         while (true) {
             switch (gui.showMenu()) {
-                case 1:
+                case "1":
                     boolean runMenuUser = true;
                     String userRole = authenticator.authenticate();
                     if(userRole.equals("LACK")){
@@ -41,22 +41,22 @@ public class Core implements ICore {
                     if (userRole.equals("ADMIN") || userRole.equals("USER")) {
                         while (runMenuUser) {
                             switch (gui.showMenuUser(userRole)) {
-                                case 1:
+                                case "1":
                                     productsDataBase.showProducts(userRole);
                                     break;
-                                case 2:
+                                case "2":
                                     productsDataBase.buyProducts(gui.buyProduct());
                                     break;
-                                case 3:
+                                case "3":
                                     runMenuUser = false;
                                     System.out.println("Correct logout!");
                                     break;
-                                case 4:
+                                case "4":
                                     if (userRole.equals("ADMIN")) {
                                         productsDataBase.exchangeProducts(gui.exchangeProduct());
                                     }
                                     break;
-                                case 5:
+                                case "5":
                                     if (userRole.equals("ADMIN")) {
                                         authenticator.showUser();
                                         authenticator.changeUserRole(gui.readLoginChangeUser());
@@ -70,10 +70,10 @@ public class Core implements ICore {
                     }
                     }
                     break;
-                case 2:
+                case "2":
                     authenticator.registration();
                     break;
-                case 3:
+                case "3":
                     try {
                         fileLoader.saveDataToFile();
                     } catch (IOException e) {

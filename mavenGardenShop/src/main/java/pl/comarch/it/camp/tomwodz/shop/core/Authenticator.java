@@ -8,7 +8,7 @@ import pl.comarch.it.camp.tomwodz.shop.db.IUserRepository;
 import pl.comarch.it.camp.tomwodz.shop.model.User;
 
 @Component
-public class Authenticator implements IAuthenticator{
+public class Authenticator implements IAuthenticator {
 
     @Autowired
     private IGUI gui;
@@ -18,6 +18,7 @@ public class Authenticator implements IAuthenticator{
 
     private static final String seed = "uxU9xUQWQMbZQm6rmtHd";
 
+    @Override
     public String authenticate() {
         int counter = 0;
         while (counter < 3) {
@@ -32,8 +33,9 @@ public class Authenticator implements IAuthenticator{
         return "LACK";
     }
 
+    @Override
     public void registration() {
-        int counter =0;
+        int counter = 0;
         while (counter < 3) {
             User userFromGUI = gui.readLogin();
             User userFromDb = usersDataBase.findUserByLogin(userFromGUI.getLogin());
@@ -42,7 +44,7 @@ public class Authenticator implements IAuthenticator{
                 userFromGUI.setName(gui.saveName());
                 userFromGUI.setEmail(gui.saveEmail());
                 usersDataBase.createNewUser(userFromGUI);
-               break;
+                break;
             } else {
                 System.out.println("Login is busy. Try again.");
                 counter++;
@@ -50,6 +52,7 @@ public class Authenticator implements IAuthenticator{
         }
     }
 
+    @Override
     public void showUser() {
         System.out.println("Login: / Role:");
         for (User aUser : usersDataBase.getUser().values()) {
@@ -57,6 +60,7 @@ public class Authenticator implements IAuthenticator{
         }
     }
 
+    @Override
     public void changeUserRole(User user) {
         for (User aUser : usersDataBase.getUser().values())
             if (aUser.getLogin().equals(user.getLogin()) && aUser.isAvailable() == true) {

@@ -18,18 +18,14 @@ public  class GUI implements IGUI {
     private IUserRepository userRepository;
 
     Scanner scanner = new Scanner(System.in);
-    public  int showMenu(){
+    @Override
+    public String showMenu(){
         for(Menu menu: EnumSet.range(Menu.HEADMENU1, Menu.HEADMENU4)){
             System.out.println(menu);}
-        String choice = scanner.nextLine().trim();
-        if (validateInput.validateChoise(choice)) {
-            return Integer.parseInt(choice);
-        }
-        else {return showMenu();
-        }
+        return scanner.nextLine().trim();
     }
-
-    public int showMenuUser(String userRole){
+    @Override
+    public String showMenuUser(String userRole){
         if(userRole.equals("ADMIN")) {
             for (Menu menu : EnumSet.range(Menu.USERMENU1, Menu.ADMINMENU2)) {
                 System.out.println(menu);
@@ -39,30 +35,26 @@ public  class GUI implements IGUI {
                     System.out.println(menu);
                 }
             }
-        String choice = scanner.nextLine().trim();
-            if (validateInput.validateChoise(choice)) {
-                return Integer.parseInt(choice);
-            }
-            else {return showMenuUser(userRole);
-            }
+        return scanner.nextLine().trim();
     }
-
+    @Override
     public  User readLoginAndPassword(){
         System.out.println("Please give your login: ");
         String login = scanner.nextLine().trim();
         System.out.println("Please give your password: ");
         return new User(login, scanner.nextLine().trim());
     }
-
+    @Override
     public  User readLogin(){
         System.out.println("Please give your login: ");
         return new User(scanner.nextLine().trim());
     }
+    @Override
     public  String savePassword(){
         System.out.println("Please give your password: ");
         return scanner.nextLine().trim();
     }
-
+    @Override
     public  String saveName(){
         System.out.println("Please give your name: ");
         boolean run = true;
@@ -80,16 +72,17 @@ public  class GUI implements IGUI {
         } while (run && counter<3);
         return name;
     }
-
+    @Override
     public  String saveEmail(){
         System.out.println("Please give your e-mail: ");
         return scanner.nextLine().trim();
     }
-
+    @Override
     public  Product buyProduct(){
         Product product = new Product();
         return buyAProduct(product);
     }
+
     private Product buyAProduct(Product product){
         Product aProduct = product;
         System.out.println("Enter the product code:");
@@ -108,6 +101,7 @@ public  class GUI implements IGUI {
         return aProduct;
     }
 
+    @Override
     public  Product exchangeProduct(){
         Product product = new Product();
         System.out.println("Enter the product code:");
@@ -117,6 +111,7 @@ public  class GUI implements IGUI {
         return product;
     }
 
+    @Override
     public User readLoginChangeUser() {
         User user = new User();
         System.out.println("Please give login user for change: ");

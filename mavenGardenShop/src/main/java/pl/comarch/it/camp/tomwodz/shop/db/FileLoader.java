@@ -20,6 +20,7 @@ public class FileLoader implements IFileLoader{
     @Autowired
     private UserRepository userRepository;
 
+    @Override
     public void readDataFromFile() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("db.csv"));
         String line;
@@ -44,6 +45,7 @@ public class FileLoader implements IFileLoader{
         reader.close();
     }
 
+    @Override
     public void saveDataToFile() throws IOException {
         Collection<Writable> entries = new ArrayList<>();
         entries.addAll(usersDatabase.getProducts().values());

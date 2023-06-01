@@ -65,7 +65,6 @@ public class Authenticator implements IAuthenticator {
         for (User aUser : usersDataBase.getUser().values())
             if (aUser.getLogin().equals(user.getLogin()) && aUser.isAvailable() == true) {
                 aUser.setRole(user.getRole());
-                System.out.println("Success!");
             }
     }
 

@@ -3,6 +3,7 @@ package pl.comarch.it.camp.tomwodz.shop.GUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.comarch.it.camp.tomwodz.shop.core.ICore;
 import pl.comarch.it.camp.tomwodz.shop.db.IUserRepository;
 import pl.comarch.it.camp.tomwodz.shop.model.User;
 import pl.comarch.it.camp.tomwodz.shop.product.Product;
@@ -16,6 +17,9 @@ public  class GUI implements IGUI {
     private IValidateInput validateInput;
     @Autowired
     private IUserRepository userRepository;
+
+    @Autowired
+    private ICore core;
 
     Scanner scanner = new Scanner(System.in);
     @Override
@@ -55,23 +59,20 @@ public  class GUI implements IGUI {
         return scanner.nextLine().trim();
     }
     @Override
-    public  String saveName(){
+    public String saveName(){
         System.out.println("Please give your name: ");
-        boolean run = true;
-        String name = "To be completed.";
-        int counter = 0;
-        do {
-            name = scanner.nextLine().trim();
-            if (validateInput.validateName(name)) {
-            run = false;
-            }
-            else {System.out.println("Enter only letters.");
-                counter++;
-                name = "To be completed.";
-            };
-        } while (run && counter<3);
-        return name;
+        return saveAName(scanner.nextLine().trim());
     }
+    private String saveAName(String name) {
+        if (validateInput.validateName(name)) {
+            return name;
+        } else if (name.equals("0")) {
+            core.start();
+        } else {
+            System.out.println("Please give your name - only letters, first big (write 0 to break): ");}
+            return saveAName(scanner.nextLine().trim());
+    }
+
     @Override
     public  String saveEmail(){
         System.out.println("Please give your e-mail: ");

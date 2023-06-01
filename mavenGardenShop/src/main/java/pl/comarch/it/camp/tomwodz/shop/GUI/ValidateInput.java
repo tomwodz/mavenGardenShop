@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class ValidateInput implements IValidateInput{
 
     @Override
-    public boolean validateName(String name){return name.matches("[A-Z][a-zA-Z]*");}
+    public boolean validateName(String name){return name.matches("[A-Z][a-z][a-zA-Z]*");}
     @Override
     public boolean validateQuantity(String quantity){return quantity.matches("[0-9]*");}
     @Override

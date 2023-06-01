@@ -19,7 +19,6 @@ public class UserRepository implements IUserRepository {
     @Override
     public void createNewUser(User user) {
         this.users.put(user.getLogin(), new User(user.getLogin(), user.getPassword(), "USER", user.getName(), user.getEmail(), true));
-        System.out.println("Success. User created.");
     }
     @Override
     public void addUser(User user) {
